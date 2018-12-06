@@ -1,0 +1,40 @@
+From d14338612ca21a7d207e981666d0f3267b9be08f Mon Sep 17 00:00:00 2001
+From: Angelo Naselli <anaselli@linux.it>
+Date: Fri, 18 Apr 2014 23:45:24 +0200
+Subject: [PATCH 3/9] added mga MSGBox
+
+---
+ swig/yui.i | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/swig/yui.i b/swig/yui.i
+index a7528b9..f471e91 100644
+--- a/swig/yui.i
++++ b/swig/yui.i
+@@ -100,6 +100,7 @@ SWIGEXPORT void Init__yui(void) {
+ #include "yui/YUILoader.h"
+ 
+ #include "yui/mga/YMGA_CBTable.h"
++#include "yui/mga/YMGAMsgBox.h"
+ #include "yui/mga/YMGAAboutDialog.h"
+ #include "yui/mga/YMGAWidgetExtensionFactory.h"
+ 
+@@ -174,6 +175,7 @@ class Exception;
+ %apply SWIGTYPE *DISOWN { YTableHeader *header_disown };
+ %apply SWIGTYPE *DISOWN { YWidget *parent_disown };
+ 
++<<<<<<< HEAD
+ %include yui/YUILog.h
+ %include yui/YUIPlugin.h
+ 
+@@ -260,6 +262,7 @@ class Exception;
+ %include yui/YExternalWidgets.h
+ %include yui/mga/YMGA_CBTable.h
+ %include yui/mga/YMGAAboutDialog.h
++%include yui/mga/YMGAMsgBox.h
+ %include yui/mga/YMGAWidgetExtensionFactory.h
+ 
+ #if defined(SWIGRUBY)
+-- 
+2.18.0
+

@@ -1,0 +1,26 @@
+From bc1f4d17f6650e4b9db4406192c493bac887b60f Mon Sep 17 00:00:00 2001
+From: Angelo Naselli <anaselli@linux.it>
+Date: Mon, 17 Aug 2015 17:00:52 +0200
+Subject: [PATCH 8/9] Fix github issue #15 Yitems are hard to manage in perl
+ bindings
+
+---
+ swig/yui.i | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/swig/yui.i b/swig/yui.i
+index 5dd5f82..05d7e8c 100644
+--- a/swig/yui.i
++++ b/swig/yui.i
+@@ -282,6 +282,8 @@ class Exception;
+   { return ($self == i); }
+   int __ne__( YItem *i )
+   { return ($self != i); }
++  int __cmp__( YItem *i )
++  { return ($self - i); }
+ #endif
+ #if defined(SWIGRUBY)
+   %rename( "==" ) equals( YItem *i );
+-- 
+2.18.0
+
