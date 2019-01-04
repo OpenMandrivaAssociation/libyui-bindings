@@ -1,6 +1,9 @@
+# we don't want to provide private python extension libs
+%define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so\\|%{python3_sitearch}/.*\\.so
+
 Name:		libyui-bindings
 Version:	1.1.2
-Release:	1
+Release:	2
 Summary:	Bindings to the Libyui user interface abstraction layer
 Group:		System/Libraries
 License:	LGPLv2+
@@ -27,7 +30,6 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	perl-devel
 BuildRequires:	ruby-devel
 
-
 %description
 libYUI is a library written entirely in C++ to provide an abstraction layer
 for Qt, GTK and ncurses UI frameworks. This means that a single code in YUI
@@ -40,7 +42,7 @@ Summary:	Python bindings for libyui
 Group:		System/Libraries
 
 %description -n python-libyui
-Python bindings to the libyui UI wrapper library
+Python bindings to the libyui UI wrapper library.
 
 %files -n python-libyui
 %{py_platsitedir}/yui.py
@@ -53,7 +55,7 @@ Summary:	Perl bindings for libyui
 Group:		System/Libraries
 
 %description -n perl-libyui
-Perl bindings to the libyui UI wrapper library
+Perl bindings to the libyui UI wrapper library.
 
 %files -n perl-libyui
 %{_datadir}/perl*/vendor_perl/yui.pm
@@ -65,7 +67,7 @@ Summary:	Ruby bindings for libyui
 Group:		System/Libraries
 
 %description -n ruby-libyui
-Ruby bindings to the libyui UI wrapper library
+Ruby bindings to the libyui UI wrapper library.
 
 %files -n ruby-libyui
 %{_libdir}/ruby/vendor_ruby/_yui.so
