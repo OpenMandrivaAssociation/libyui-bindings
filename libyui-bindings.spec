@@ -2,20 +2,13 @@
 %define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so\\|%{python3_sitearch}/.*\\.so
 
 Name:		libyui-bindings
-Version:	1.1.2
-Release:	3
+Version:	2.0.0
+Release:	1
 Summary:	Bindings to the Libyui user interface abstraction layer
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		https://github.com/libyui/libyui-bindings
-Source0:	https://github.com/libyui/libyui-bindings/archive/v%{version}.tar.gz
-# Based on https://github.com/anaselli/libyui-bindings/tree/mageia
-Patch0:		0001-Mageia-changes-to-get-also-libyui-mga.patch
-Patch1:		0002-Added-YMGAAboutDialog.patch
-Patch2:		0003-added-mga-MSGBox.patch
-Patch3:		0004-wrong-merge.patch
-Patch4:		0005-Added-an-example-for-the-mga-plugin.patch
-Patch7:		0008-Fix-github-issue-15-Yitems-are-hard-to-manage-in-per.patch
+Source0:	https://github.com/libyui/libyui-bindings/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
@@ -26,7 +19,7 @@ BuildRequires:	libtool
 BuildRequires:	cmake(Libyui)
 BuildRequires:	cmake(Libyui-mga)
 BuildRequires:	swig
-BuildRequires:	pkgconfig(python3)
+BuildRequires:	pkgconfig(python)
 BuildRequires:	perl-devel
 BuildRequires:	ruby-devel
 
