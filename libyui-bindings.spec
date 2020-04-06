@@ -22,6 +22,7 @@ BuildRequires:	swig
 BuildRequires:	pkgconfig(python)
 BuildRequires:	perl-devel
 BuildRequires:	ruby-devel
+BuildRequires:  ruby-RubyGems
 
 %description
 libYUI is a library written entirely in C++ to provide an abstraction layer
@@ -79,6 +80,7 @@ Ruby bindings to the libyui UI wrapper library.
 	-DLIB_DIR=%{_lib}      \
 	-DSKIP_LATEX=yes       \
 	-DENABLE_WERROR:BOOL=no \
+	-DWITH_MGA=1 \
 	-DCMAKE_BUILD_TYPE=RELWITHDEBINFO
 
 %make_build
