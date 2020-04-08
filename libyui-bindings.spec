@@ -72,8 +72,6 @@ Ruby bindings to the libyui UI wrapper library.
 %autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
 # As of 1.1.2, can't use -G Ninja because of custom commands
 # being written to Makefiles
 %cmake \
