@@ -3,7 +3,7 @@
 
 Name:		libyui-bindings
 Version:	1.1.2
-Release:	3
+Release:	4
 Summary:	Bindings to the Libyui user interface abstraction layer
 Group:		System/Libraries
 License:	LGPLv2+
