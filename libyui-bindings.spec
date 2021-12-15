@@ -2,29 +2,24 @@
 %define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so\\|%{python3_sitearch}/.*\\.so
 
 Name:		libyui-bindings
-Version:	1.1.2
-Release:	4
+Version:	4.2.22
+Release:	1
 Summary:	Bindings to the Libyui user interface abstraction layer
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		https://github.com/libyui/libyui-bindings
-Source0:	https://github.com/libyui/libyui-bindings/archive/v%{version}.tar.gz
+Source0:	https://github.com/libyui/libyui-bindings/archive/%{name}-%{version}.tar.xz
 # Based on https://github.com/anaselli/libyui-bindings/tree/mageia
 Patch0:		0001-Mageia-changes-to-get-also-libyui-mga.patch
-Patch1:		0002-Added-YMGAAboutDialog.patch
-Patch2:		0003-added-mga-MSGBox.patch
-Patch3:		0004-wrong-merge.patch
-Patch4:		0005-Added-an-example-for-the-mga-plugin.patch
 Patch7:		0008-Fix-github-issue-15-Yitems-are-hard-to-manage-in-per.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
-BuildRequires:	texlive
+BuildRequires:	graphviz
+#BuildRequires:	texlive
 BuildRequires:	ghostscript
 BuildRequires:	boost-devel
 BuildRequires:	libtool
-BuildRequires:	cmake(Libyui)
-BuildRequires:	cmake(Libyui-mga)
 BuildRequires:	swig
 BuildRequires:	pkgconfig(python3)
 BuildRequires:	perl-devel
@@ -86,7 +81,8 @@ Ruby bindings to the libyui UI wrapper library.
 	-DLIB_DIR=%{_lib}      \
 	-DSKIP_LATEX=yes       \
 	-DENABLE_WERROR:BOOL=no \
-	-DCMAKE_BUILD_TYPE=RELWITHDEBINFO
+	-DCMAKE_BUILD_TYPE=RELWITHDEBINFO \
+	-DWITH_MGA=yes
 
 %make_build
 
