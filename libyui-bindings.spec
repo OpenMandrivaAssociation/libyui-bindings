@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	perl-devel
 BuildRequires:	ruby-devel
 BuildRequires:	pkgconfig(libyui)
+Buildrequires:	pkgconfig(libyui-mga)
 
 %description
 libYUI is a library written entirely in C++ to provide an abstraction layer
