@@ -1,15 +1,5 @@
-From 539b912a7b6969bf177827b40f82a06ed1507dab Mon Sep 17 00:00:00 2001
-From: Angelo Naselli <anaselli@linux.it>
-Date: Sun, 15 Dec 2013 19:51:05 +0100
-Subject: [PATCH 1/9] Mageia changes (to get also libyui-mga)
-
----
- CMakeLists.txt | 20 ++++++++++++++++----
- swig/yui.i     |  5 +++++
- 2 files changed, 21 insertions(+), 4 deletions(-)
-
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 59c94af..4359434 100644
+index a452c7f..ad1b88c 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -2,7 +2,7 @@
@@ -18,11 +8,11 @@ index 59c94af..4359434 100644
  
 -cmake_minimum_required(VERSION 2.6)
 +cmake_minimum_required(VERSION 2.8)
+ project( libyui-bindings )
  
  if(COMMAND cmake_policy)
-   cmake_policy(SET CMP0017 NEW)
-@@ -20,6 +20,19 @@ SET(CMAKE_MODULE_PATH ${CMAKE_INSTALL_PREFIX}/share/cmake/Modules ${CMAKE_MODULE
- INCLUDE(${CMAKE_SOURCE_DIR}/VERSION.cmake)
+@@ -44,6 +44,19 @@ SET(CMAKE_MODULE_PATH ${CMAKE_INSTALL_PREFIX}/share/cmake/Modules ${CMAKE_MODULE
+ INCLUDE(../VERSION.cmake)
  
  SET( PACKAGE "libyui-bindings" )
 +#if you need to get a git versioned package you can use cmake -DGIT_VERSION=on
@@ -30,10 +20,10 @@ index 59c94af..4359434 100644
 +    exec_program(
 +                 "date"
 +                 ${CMAKE_CURRENT_SOURCE_DIR}
-+		 ARGS "+%Y%m%d"
++                ARGS "+%Y%m%d"
 +                 OUTPUT_VARIABLE GIT_VERSION )
 +
-+	 set (GIT_SHA1_VERSION "-${GIT_VERSION}")
++        set (GIT_SHA1_VERSION "-${GIT_VERSION}")
 +else()
 +  set (GIT_SHA1_VERSION "")
 +endif()
@@ -41,16 +31,7 @@ index 59c94af..4359434 100644
  SET( VERSION "${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH}" )
  
  IF( NOT YPREFIX )
-@@ -28,7 +41,7 @@ ENDIF()
- SET( CMAKE_INSTALL_PREFIX "${YPREFIX}" )
- 
- SET( LIBYUI_INCLUDE_DIR "${YPREFIX}/include" )
--SET( LIBYUI_LIBRARY "yui" )
-+SET( LIBYUI_LIBRARY yui  yui-mga )
- 
- SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Language Bindings for libyui")
- SET(CPACK_PACKAGE_VENDOR "Novell Inc.")
-@@ -36,7 +49,6 @@ SET(CPACK_PACKAGE_VENDOR "Novell Inc.")
+@@ -59,7 +72,6 @@ SET(CPACK_PACKAGE_VENDOR "Novell Inc.")
  #SET(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/Copyright.txt")
  SET(CPACK_PACKAGE_VERSION_MAJOR ${VERSION_MAJOR})
  SET(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
@@ -58,7 +39,7 @@ index 59c94af..4359434 100644
  
  if (GENERATE)
      SET(CPACK_PACKAGE_CONTACT "SUSE")
-@@ -57,7 +69,7 @@ else (GENERATE)
+@@ -80,7 +92,7 @@ else (GENERATE)
  endif (GENERATE)
  
  SET( CPACK_SOURCE_GENERATOR "TBZ2")
@@ -67,29 +48,12 @@ index 59c94af..4359434 100644
  
  # The following components are regex's to match anywhere (unless anchored)
  # in absolute path + filename to find files or directories to be excluded
-diff --git a/swig/yui.i b/swig/yui.i
-index 0a44d27..606e3a7 100644
---- a/swig/yui.i
-+++ b/swig/yui.i
-@@ -99,6 +99,9 @@ SWIGEXPORT void Init__yui(void) {
- 
- #include "yui/YUILoader.h"
- 
-+#include "yui/mga/YMGA_CBTable.h"
-+#include "yui/mga/YMGAWidgetExtensionFactory.h"
-+
- using namespace std;
- 
- extern void *start_ui_thread( void *ui_int );
-@@ -254,6 +257,8 @@ class Exception;
- %include yui/YWidgetID.h
- %include yui/YExternalWidgetFactory.h
- %include yui/YExternalWidgets.h
-+%include yui/mga/YMGA_CBTable.h
-+%include yui/mga/YMGAWidgetExtensionFactory.h
- 
- #if defined(SWIGRUBY)
- %extend YEvent {
--- 
-2.18.0
-
+@@ -114,7 +126,7 @@ if (YUI_FOUND)
+ else()
+   message (STATUS "System libyui not found")
+   # set them anyway for subdir CMakeLists.txt
+-  SET( LIBYUI_LIBRARY yui )
++  SET( LIBYUI_LIBRARY yui yui-mga )
+   SET( LIBYUI_INCLUDE_DIR /usr/include )
+   SET( LIBYUI_INCLUDE_CFLAGS -I${YUI_INCLUDE_DIR} )
+ endif()

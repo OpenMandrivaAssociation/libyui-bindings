@@ -11,7 +11,7 @@ URL:		https://github.com/libyui/libyui-bindings
 Source0:	https://github.com/libyui/libyui-bindings/archive/%{name}-%{version}.tar.xz
 # Based on https://github.com/anaselli/libyui-bindings/tree/mageia
 Patch0:		0001-Mageia-changes-to-get-also-libyui-mga.patch
-Patch7:		0008-Fix-github-issue-15-Yitems-are-hard-to-manage-in-per.patch
+Patch1:		0008-Fix-github-issue-15-Yitems-are-hard-to-manage-in-per.patch
 
 BuildRequires:	cmake
 BuildRequires:	doxygen
