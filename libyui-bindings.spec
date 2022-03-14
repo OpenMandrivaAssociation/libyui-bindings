@@ -44,7 +44,7 @@ Python bindings to the libyui UI wrapper library.
 %files -n python-libyui
 %{py_platsitedir}/yui.py
 %{py_platsitedir}/_yui.so
-%{py_platsitedir}/__pycache__
+# %{py_platsitedir}/__pycache__
 
 #----------------------------------------------------------
 %package -n perl-libyui
